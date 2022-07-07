@@ -21,3 +21,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/components/sign-up-form/sign-up-form.component.jsx
