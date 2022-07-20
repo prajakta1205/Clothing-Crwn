@@ -5,17 +5,17 @@ import { createAction } from '../utils/reducers/reducers.util';
 const addCartItem = (cartItems, productToAdd) => {
   console.log(cartItems)
   console.log(productToAdd)
-  // const existingCartItem = cartItems.find(
-  //   (cartItem) => cartItem.id === productToAdd.id
-  // );
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
+  );
 
-  // if (existingCartItem) {
-  //   return cartItems.map((cartItem) =>
-  //     cartItem.id === productToAdd.id
-  //       ? { ...cartItem, quantity: cartItem.quantity + 1 }
-  //       : cartItem
-  //   );
-  // }
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+  }
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
