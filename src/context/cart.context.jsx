@@ -3,8 +3,8 @@ import { createContext, useState, useReducer } from 'react';
 import { createAction } from '../utils/reducers/reducers.util';
 
 const addCartItem = (cartItems, productToAdd) => {
-  console.log(cartItems)
-  console.log(productToAdd)
+  console.log(cartItems[0])
+  console.log("hello"+productToAdd)
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -109,17 +109,17 @@ export const CartProvider = ({ children }) => {
 
 
   const addItemToCart = (productToAdd) => {
-    const newCartItems=addCartItem(addCartItem(cartItems, productToAdd));
+    const newCartItems=addCartItem(cartItems, productToAdd);
     updateCartItemsReducer(newCartItems)
   };
 
   const removeItemToCart = (cartItemToRemove) => {
-    const newCartItems=removeCartItem(removeCartItem(cartItems, cartItemToRemove));
+    const newCartItems=removeCartItem(cartItems, cartItemToRemove);
     updateCartItemsReducer(newCartItems)
   };
 
   const clearItemFromCart = (cartItemToClear) => {
-    const newCartItems=clearCartItem(clearCartItem(cartItems, cartItemToClear));
+    const newCartItems=clearCartItem(cartItems, cartItemToClear);
     updateCartItemsReducer(newCartItems)
   };
 
