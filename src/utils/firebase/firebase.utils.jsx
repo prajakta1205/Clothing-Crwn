@@ -23,14 +23,16 @@ import {
 
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyD3dIKjXNsJ1TVjyEDEQVw6JS9FtnHru9A",
-    authDomain: "e-shop-cloth-db.firebaseapp.com",
-    projectId: "e-shop-cloth-db",
-    storageBucket: "e-shop-cloth-db.appspot.com",
-    messagingSenderId: "688465452941",
-    appId: "1:688465452941:web:2d2df8918825353456a7c4"
-  };
+  apiKey: "AIzaSyD3dIKjXNsJ1TVjyEDEQVw6JS9FtnHru9A",
+  authDomain: "e-shop-cloth-db.firebaseapp.com",
+  projectId: "e-shop-cloth-db",
+  storageBucket: "e-shop-cloth-db.appspot.com",
+  messagingSenderId: "688465452941",
+  appId: "1:688465452941:web:2d2df8918825353456a7c4",
+  measurementId: "G-GDR9H0KB2P"
+};
   
   // Initialize Firebase
   const firebaseApp = initializeApp(firebaseConfig);
@@ -61,18 +63,19 @@ const firebaseConfig = {
     console.log('done')
   }
 
-  export const getCategoriesAndDocument=async()=>{
-    const collectionRef=collection(db,'categories')
-    const q=query(collectionRef)
+  export const getCategoriesAndDocuments = async () => {debugger;
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
 
-    const querySnapshot = await getDocs(q)
-    const categoryMap=querySnapshot.docs.reduce((acc,docSnapshot)=>{
-      const {title,items} = docSnapshot.data()
-      acc[title.toLowerCase()]=items
-      return acc
-    },{})
-    return categoryMap
-  }
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data();
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {});
+
+    return categoryMap;
+  };
   
   export const createUserDocumentFromAuth = async (
     userAuth,
